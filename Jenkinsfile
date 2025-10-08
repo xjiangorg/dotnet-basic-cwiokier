@@ -5,14 +5,16 @@ library identifier: 'RHTAP_Jenkins@release-v1.7.x', retriever: modernSCM(
    remote: 'https://github.com/redhat-appstudio/tssc-sample-jenkins.git'])
 
 pipeline {
-    agent any
+    agent {
+        label 'tssc-jenkins-agent'    
+}
     environment {
         ROX_API_TOKEN = credentials('ROX_API_TOKEN')
         GITOPS_AUTH_PASSWORD = credentials('GITOPS_AUTH_PASSWORD')
         /* Set this password for your specific registry */
-        /* IMAGE_REGISTRY_PASSWORD = credentials('IMAGE_REGISTRY_PASSWORD') */
+        IMAGE_REGISTRY_PASSWORD = credentials('IMAGE_REGISTRY_PASSWORD')
         /* Default registry is set to quay.io */
-        QUAY_IO_CREDS = credentials('QUAY_IO_CREDS')
+        /* QUAY_IO_CREDS = credentials('QUAY_IO_CREDS') */
         /* ARTIFACTORY_IO_CREDS = credentials('ARTIFACTORY_IO_CREDS') */
         /* NEXUS_IO_CREDS = credentials('NEXUS_IO_CREDS') */
         COSIGN_SECRET_PASSWORD = credentials('COSIGN_SECRET_PASSWORD')
