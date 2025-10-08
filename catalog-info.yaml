@@ -1,0 +1,23 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: dotnet-basic-cwiokier 
+  description: Secure Supply Chain Example for C# .Net 6.0 example with advanced continuous integration pipeline covering building, CVE scanning, security scanning, signatures, attestations, SLSA provenance and SBOM along with Gitops-based continuous deployment.   
+  links:
+    - url: https://www.redhat.com/en/solutions/trusted-software-supply-chain
+      title: Trusted Secure Supply Chain 
+      icon: dashboard
+      type: admin-dashboard
+  annotations:
+    # ArgoCD apps from this template used tssc-gitops as the grouping
+    argocd/app-selector: tssc/gitops=dotnet-basic-cwiokier
+    backstage.io/kubernetes-id: dotnet-basic-cwiokier 
+    backstage.io/techdocs-ref: dir:. 
+    jenkins.io/job-full-name: dotnet-basic-cwiokier
+    quay.io/repository-slug: quay_xjiang/dotnet-basic-cwiokier
+  tags: ["net", "sscs", "sbom", "acs"] 
+spec:
+  type: service
+  owner: user:guest 
+  lifecycle: experimental
+ 
